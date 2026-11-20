@@ -1,0 +1,7 @@
+# Reports come from the "Something look wrong?" link on each photo page,
+# which fills in the photo. A blank issue would arrive without it.
+blank_issues_enabled: false
+contact_links:
+  - name: Browse the photos
+    url: https://mermaid.pics
+    about: Open the photo you want to report and use the link at the bottom of its page.

@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: MIT
+#
+# The issue form behind a photo page's "Something look wrong?" link.
+# COPY THIS FILE into the SITE repo as .github/ISSUE_TEMPLATE/photo-report.yml
+# and point site.yaml at it:
+#
+#   feedback:
+#     repo: "<owner>/<site-repo>"
+#     template: "photo-report.yml"
+#
+# photogen prefills the `photo` and `context` fields from the URL, so their
+# `id:`s are a contract with photogen/feedback.py (PHOTO_FIELD_ID /
+# CONTEXT_FIELD_ID) — tests/test_feedback.py pins them. GitHub only prefills
+# `input` and `textarea` fields; a dropdown or checkbox here would ignore the
+# URL. Everything else — the title prefix, the labels, the prompt — lives
+# here rather than in the URL, which is the point of using a form at all.
+name: Photo report
+description: Report a wrong species ID, date, dive site or anything else on a photo page
+title: "Photo report: "
+labels: [photo-report]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the correction — the first two fields come from the photo page; just tell us what's wrong.
+  - type: input
+    id: photo
+    attributes:
+      label: Photo
+      description: Link to the photo page
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: As published
+      description: What the page said when you opened this report
+    validations:
+      required: false
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong?
+      placeholder: e.g. this is a Chromis multilineata, not a Chromis cyanea — the tail is forked and dark
+    validations:
+      required: true
